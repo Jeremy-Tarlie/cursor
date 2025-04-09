@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "payment": {
+      "url": "https://api.payment.example.com",
+      "apiKey": "${PAYMENT_API_KEY}",
+      "webhookSecret": "${PAYMENT_WEBHOOK_SECRET}"
+    },
+    "user": {
+      "url": "https://api.user.example.com",
+      "apiKey": "${USER_API_KEY}"
+    },
+    "admin": {
+      "url": "https://api.admin.example.com",
+      "apiKey": "${ADMIN_API_KEY}"
+    },
+    "stripe": {
+      "url": "https://api.stripe.com/v1",
+      "apiKey": "${STRIPE_SECRET_KEY}",
+      "webhookSecret": "${STRIPE_WEBHOOK_SECRET}"
+    }
+  }
+} 

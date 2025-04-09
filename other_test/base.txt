@@ -1,0 +1,5 @@
+Objectif : Créer un micro-service qui permet de gérer des utilisateurs.
+- CRUD Users
+- Base : SQLite avec Prisma
+- API REST (Next.js route handlers)
+- Tests unitaires + e2e

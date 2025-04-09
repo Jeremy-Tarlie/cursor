@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur d'Images avec Glif</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Générateur d'Images avec Glif</h1>
+            <p>Décrivez l'image que vous souhaitez générer</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <textarea 
+                    id="promptInput" 
+                    placeholder="Décrivez l'image que vous souhaitez générer... (par exemple: 'un chat orange jouant avec une pelote de laine bleue')"
+                    rows="4"
+                ></textarea>
+                <button id="generateBtn">Générer l'Image</button>
+            </div>
+
+            <div class="output-section">
+                <div id="loadingIndicator" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Génération en cours...</p>
+                </div>
+                <div id="imageContainer" class="hidden">
+                    <img id="generatedImage" src="" alt="Image générée">
+                    <button id="downloadBtn">Télécharger l'Image</button>
+                </div>
+                <div id="errorMessage" class="hidden">
+                    Une erreur s'est produite lors de la génération de l'image.
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Propulsé par Glif.app</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
