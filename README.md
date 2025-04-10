@@ -9,7 +9,8 @@ Ce repository contient plusieurs projets de test et de développement. Voici un 
 ├── cursorTest/     # Système d'authentification et réservations
 ├── generate_img/   # Générateur d'images
 ├── other_test/    # Application CRUD
-└── testCursor/    # Outil de traduction
+├── testCursor/    # Outil de traduction
+└── toDoList/    # Gestion de tache
 ```
 
 ## Description des Projets
@@ -33,6 +34,13 @@ Application CRUD (Create, Read, Update, Delete) développée avec Next.js. Perme
 ### 🌐 testCursor
 Application de traduction permettant de convertir du texte entre différentes langues.
 
+### 📝 toDoList
+Application de gestion de tâches permettant de :
+- Ajouter des tâches
+- Marquer les tâches comme terminées
+- Supprimer des tâches
+- Organiser les tâches par priorité ou catégorie
+
 ## Configuration
 
 Le repository utilise un fichier `.gitignore` configuré pour ignorer :
@@ -47,9 +55,10 @@ Le repository utilise un fichier `.gitignore` configuré pour ignorer :
 ## Technologies Utilisées
 
 - **cursorTest**: Authentification et gestion des réservations
-- **generate_img**: Génération d'images
-- **other_test**: Next.js, CRUD operations
+- **generate_img**: Génération d'images, jest
+- **other_test**: Next.js, CRUD operations, jest
 - **testCursor**: Services de traduction
+- **toDoList**: Next.js, playwright, jest
 
 ## Contribution
 
