@@ -1,0 +1,80 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Nom de la règle : architecture-et-structure.mdc
+# Description : Organisation des dossiers et configuration de Prisma
+# Dernière mise à jour : 2025-04-07
+
+## Structure des dossiers
+ /app
+    /(auth)
+      /login
+        page.tsx
+        login.action.ts
+      /register
+        page.tsx
+        register.action.ts
+    /(protected)
+      /dashboard
+        page.tsx
+        reservations.action.ts
+    /page.tsx
+  
+  /components
+    /ui
+      Button.tsx
+      Input.tsx
+      Card.tsx
+    /forms
+      LoginForm.tsx
+      RegisterForm.tsx
+      ReservationForm.tsx
+    /layout
+      Header.tsx
+      Footer.tsx
+      Sidebar.tsx
+  
+  /lib
+    /actions
+      auth.actions.ts
+      reservations.actions.ts
+    /validations
+      auth.schema.ts
+      reservation.schema.ts
+  
+  /utils
+    navigator.ts
+    constants.ts
+    
+  /styles
+    globals.css
+    theme.ts
+
+## Configuration Prisma
+```prisma
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  reservations Reservation[]
+}
+
+model Reservation {
+  id        String   @id @default(cuid())
+  date      DateTime
+  status    String   @default("pending")
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+
+
+

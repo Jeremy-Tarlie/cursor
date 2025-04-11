@@ -1,0 +1,41 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Nom de la règle : theming-et-styles.mdc
+# Description : Configuration du thème blanc et bleu
+# Dernière mise à jour : 2025-04-07
+
+## Thème graphique
+- **Couleurs principales** : Blanc et bleu.
+- **Fichier `theme.ts`** :
+```typescript
+export const colors = {
+  primary: {
+    50: '#e6f3ff',
+    100: '#bde0ff',
+    500: '#0066cc',
+    600: '#0052a3',
+  },
+  white: '#ffffff',
+  background: {
+    primary: '#ffffff',
+    secondary: '#f8fafc',
+  },
+};
+```
+
+## Styles globaux
+
+```css
+:root {
+  --primary: #0066cc;
+  --background: #ffffff;
+}
+
+body {
+  background-color: var(--background);
+  color: #333333;
+}
+```

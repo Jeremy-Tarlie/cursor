@@ -1,0 +1,29 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Nom de la règle : navigation-et-routes.mdc
+# Description : Configuration des routes et de la navigation
+# Dernière mise à jour : 2025-04-07
+
+## Fichier `navigator.ts`
+```typescript
+export const routes = {
+  home: '/',
+  login: '/login',
+  register: '/register',
+  dashboard: '/dashboard',
+  reservations: '/dashboard/reservations',
+} as const;
+
+export const protectedRoutes = [
+  routes.dashboard,
+  routes.reservations,
+];
+
+export const publicRoutes = [
+  routes.home,
+  routes.login,
+  routes.register,
+];

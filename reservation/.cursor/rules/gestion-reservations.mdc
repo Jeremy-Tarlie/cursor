@@ -1,0 +1,39 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Nom de la règle : gestion-reservations.mdc
+# Description : Gestion des réservations dans le dashboard
+# Dernière mise à jour : 2025-04-07
+
+## Création d'une réservation
+- **Déclencheur** : L'utilisateur soumet le formulaire de réservation.
+- **Action** : 
+  - Valider les données avec Zod.
+  - Créer une réservation dans la base de données avec Prisma.
+
+```typescript
+export async function createReservation(data: ReservationSchema) {
+  return await prisma.reservation.create({
+    data: {
+      date: data.date,
+      userId: data.userId,
+    },
+  });
+}
+```
+
+## Affichage des réservations
+- **Déclencheur** : L'utilisateur accède à la page "Dashboard".
+- **Action** : Récupérer les réservations de l'utilisateur connecté.
+
+```typescript
+export async function getUserReservations(userId: string) {
+  return await prisma.reservation.findMany({
+    where: { userId },
+    orderBy: { date: 'desc' },
+  });
+}
+```
+

@@ -1,0 +1,54 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Nom de la règle : authentification.mdc
+# Description : Gestion de l'authentification et des utilisateurs
+# Dernière mise à jour : 2025-04-07
+
+## Inscription
+- **Déclencheur** : L'utilisateur soumet le formulaire d'inscription.
+- **Action** : 
+  - Valider les données avec Zod.
+  - Hacher le mot de passe avec bcrypt.
+  - Créer un utilisateur dans la base de données avec Prisma.
+
+```typescript
+export async function register(data: RegisterSchema) {
+  const hashedPassword = await hash(data.password, 10);
+  return await prisma.user.create({
+    data: {
+      email: data.email,
+      password: hashedPassword,
+      name: data.name,
+    },
+  });
+}
+```
+
+--
+
+## Connexion
+- **Déclencheur** : L'utilisateur soumet le formulaire de connexion.
+- **Action** :
+    - Valider les données avec Zod.
+    - Vérifier l'existence de l'utilisateur.
+    - Comparer le mot de passe avec bcrypt.
+
+```typescript
+export async function login(data: LoginSchema) {
+  const user = await prisma.user.findUnique({
+    where: { email: data.email },
+  });
+  if (!user) throw new Error('Utilisateur introuvable');
+  const isValid = await compare(data.password, user.password);
+  if (!isValid) throw new Error('Mot de passe incorrect');
+  return user;
+}
+```
+
+
+## Protection des routes
+- **Règle** : Les pages protégées (comme le dashboard) ne sont accessibles qu'aux utilisateurs connectés.
+- **Action** : Utiliser un middleware ou une vérification côté serveur pour rediriger les utilisateurs non connectés.
